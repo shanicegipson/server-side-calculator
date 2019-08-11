@@ -1,4 +1,5 @@
 const dataForServer = {};
+let arrayDataForDom = [];
 
 
 $(document).ready(onReady);
@@ -17,7 +18,9 @@ function getData() {
         type:'GET',
         url: '/math',
     }).then((response) => {
-         console.log(response);
+        arrayDataForDom = response.array;
+        console.log(arrayDataForDom);
+         render(response);
     }); 
 }
 
@@ -43,6 +46,7 @@ function postData(){
         data: dataForServer
     }).then((response) => {
         console.log(response);
+        getData();
     });
 }
 
@@ -51,7 +55,12 @@ function clearInputs(){
     $(".js-second-math-input").val('');
 }
 
-function render(){
+function render(arrayDataForDom){
     $('#js-container').empty();
-    console.log(render);
+    for (i=0;i<arrayDataForDom.length;i++);
+    
+    $('.js-container').append(``);
+
+
+
 }

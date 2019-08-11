@@ -4,54 +4,59 @@ const bodyParser = require('body-parser');
 const PORT = 5000;
 
 const  mathHistory = [];
-const arraySender = {};
+let arraySender = {};
 
 arraySender.array = mathHistory;
+
 
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.get('/math', (req,res) => {
+    res.send(arraySender);
+});
 
 app.post('/math', (req,res) => {
-    console.log(req.body);
+    //console.log(req.body);
 
-    let total = 0;
-    let history = req.body;
+    let currentMath ={};
+
+    currentMath.numberOne = req.body.numberOne;
+    currentMath.numberTwo = req.body.numberTwo;
+    
 
     if (req.body.mathOperator == 'plus') {
-        history.total = parseInt(req.body.numberOne) + parseInt(req.body.numberTwo)
-        console.log(total);
-        mathHistory.push(history);
-        console.log(mathHistory);
+        currentMath.total = parseInt(req.body.numberOne) + parseInt(req.body.numberTwo)
+        currentMath.operator = '+';
+        mathHistory.push(currentMath);
+        
     }
     if (req.body.mathOperator == 'subtract') {
-        history.total = parseInt(req.body.numberOne) - parseInt(req.body.numberTwo)
-        console.log(total);
-        mathHistory.push(history);
-        console.log(mathHistory);
+        currentMath.total = parseInt(req.body.numberOne) - parseInt(req.body.numberTwo)
+        currentMath.operator = '-';
+        mathHistory.push(currentMath);
+        
     }
 
     if(req.body.mathOperator == 'multiply') {
-        history.total = parseInt(req.body.numberOne) * parseInt(req.body.numberTwo)
-        console.log(total);
-        mathHistory.push(history);
-        console.log(mathHistory);
+        currentMath.total = parseInt(req.body.numberOne) * parseInt(req.body.numberTwo)
+        currentMath.operator = '*';
+        mathHistory.push(currentMath);
+        
     }
 
     if(req.body.mathOperator == 'divide') {
-        history.total = parseInt(req.body.numberOne) / parseInt(req.body.numberTwo)
-        console.log(total);
-        mathHistory.push(history);
-        console.log(mathHistory);
+        currentMath.total = parseInt(req.body.numberOne) / parseInt(req.body.numberTwo)
+        currentMath.operator = '/';
+        mathHistory.push(currentMath);
+       
     }
-
+    console.log(arraySender);
     res.send('shanice its working');
 
 });
 
-app.get('/math', (req,res) => {
-    res.send(mathHistory);
-});
+
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`)
