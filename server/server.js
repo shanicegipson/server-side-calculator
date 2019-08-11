@@ -25,21 +25,21 @@ app.post('/math', (req,res) => {
         console.log(mathHistory);
     }
     if (req.body.mathOperator == 'subtract') {
-        total = parseInt(req.body.numberOne) - parseInt(req.body.numberTwo)
+        history.total = parseInt(req.body.numberOne) - parseInt(req.body.numberTwo)
         console.log(total);
         mathHistory.push(history);
         console.log(mathHistory);
     }
 
     if(req.body.mathOperator == 'multiply') {
-        total = parseInt(req.body.numberOne) * parseInt(req.body.numberTwo)
+        history.total = parseInt(req.body.numberOne) * parseInt(req.body.numberTwo)
         console.log(total);
         mathHistory.push(history);
         console.log(mathHistory);
     }
 
     if(req.body.mathOperator == 'divide') {
-        total = parseInt(req.body.numberOne) / parseInt(req.body.numberTwo)
+        history.total = parseInt(req.body.numberOne) / parseInt(req.body.numberTwo)
         console.log(total);
         mathHistory.push(history);
         console.log(mathHistory);
