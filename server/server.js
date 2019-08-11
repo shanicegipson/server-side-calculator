@@ -8,13 +8,14 @@ mathHistory = [];
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/math', (req,res) => {
-    res.send('Comming from Get');
-});
 
 app.post('/math', (req,res) => {
-    dataForServer = req.body;
+    console.log(req);
 res.send('shanice its working');
+});
+
+app.get('/math', (req,res) => {
+    res.send('Comming from Get');
 });
 
 app.listen(PORT, () => {

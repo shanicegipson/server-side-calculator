@@ -26,18 +26,18 @@ function getData() {
 }
 
 function doMath() {
-    const valueOne = parseInt($(".js-first-math-input").val());
-    const valueTwo = parseInt($(".js-second-math-input").val());
+    const numberOne = parseInt($(".js-first-math-input").val());
+    const numberTwo = parseInt($(".js-second-math-input").val());
     const mathOperator = $(this).data('math');
     
 
     const dataForServer = {
-        value1: valueOne,
-        value2: valueTwo,
+        number1: numberOne,
+        number2: numberTwo,
         operation: mathOperator,
         
     };
-    console.log(dataForServer);
+    console.log('Information being sent to server', dataForServer);
 
     postData();
     
