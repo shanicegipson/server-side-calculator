@@ -13,6 +13,7 @@ app.get('/math', (req,res) => {
 });
 
 app.post('/math', (req,res) => {
+    dataForServer = req.body;
 res.send('shanice its working');
 });
 

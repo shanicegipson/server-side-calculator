@@ -27,22 +27,24 @@ function getData() {
 
 function doMath() {
     const valueOne = parseInt($(".js-first-math-input").val());
-    const mathOperator = $(this).data('math');
     const valueTwo = parseInt($(".js-second-math-input").val());
+    const mathOperator = $(this).data('math');
+    
 
     const dataForServer = {
         value1: valueOne,
-        operation: mathOperator,
         value2: valueTwo,
+        operation: mathOperator,
+        
     };
+    console.log(dataForServer);
 
     postData();
     
 };
 
-function postData(){ 
-    console.log(dataForServer)
-
+function postData(dataForServer){ 
+    
     $.ajax({
         type:'POST',
         url: '/math',
