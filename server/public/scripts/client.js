@@ -1,17 +1,13 @@
-// userInputs = {
-//     valueOne: null,
-//     mathOperator = null,
-//     valueTwo = null,
-// };
+const dataForServer = {};
 
 
 $(document).ready(onReady);
 
 function onReady() {
 
-    $('.js-btn-math').on('click', doMath);
+    $('.js-btn-math').on('click', findingOperator);
     $('.js-btn-submit').on('click', submitEquation);
-    // $('#js-btn-submit').hide();
+    $('.js-btn-clear').on('click', clearInputs);
 
     getData();
 }
@@ -25,25 +21,21 @@ function getData() {
     }); 
 }
 
-function doMath() {
-    const numberOne = parseInt($(".js-first-math-input").val());
-    const numberTwo = parseInt($(".js-second-math-input").val());
+function findingOperator() {
     const mathOperator = $(this).data('math');
-    
-
-    const dataForServer = {
-        number1: numberOne,
-        number2: numberTwo,
-        operation: mathOperator,
-        
-    };
-    console.log('Information being sent to server', dataForServer);
-
-    postData();
-    
+    dataForServer.mathOperator = mathOperator;
 };
 
-function postData(dataForServer){ 
+function submitEquation(){
+    const numberOne = parseInt($(".js-first-math-input").val());
+    const numberTwo = parseInt($(".js-second-math-input").val());
+    dataForServer.numberOne = numberOne;
+    dataForServer.numberTwo = numberTwo;
+
+    postData();
+}
+
+function postData(){ 
     
     $.ajax({
         type:'POST',
@@ -54,6 +46,12 @@ function postData(dataForServer){
     });
 }
 
-function submitEquation(){
-    console.log('Submit works!');
+function clearInputs(){
+    $(".js-first-math-input").val('');
+    $(".js-second-math-input").val('');
+}
+
+function render(){
+    $('#js-container').empty();
+    console.log(render);
 }
