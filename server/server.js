@@ -3,15 +3,28 @@ const app = express();
 const bodyParser = require('body-parser');
 const PORT = 5000;
 
-app.use(express.static('server/public'));
+mathHistory = [];
 
-app.get('/demo', (req,res) => {
-    console.log('GET Route!');
-    res.send('Got GET!');
+app.use(express.static('server/public'));
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.get('/math', (req,res) => {
+    res.send('Comming from Get');
 });
 
-// app.post
+app.post('/math', (req,res) => {
+res.send('shanice its working');
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`)
 });
+
+
+function doMath () {
+    if ($(this).data('math')="+") {
+        valueOne + ValueTwo
+    } else {
+        
+    }
+}
