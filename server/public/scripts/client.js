@@ -55,19 +55,17 @@ function clearInputs(){
     $(".js-second-math-input").val('');
 }
 
-function render(arrayDataForDom){
+function render(arrayDataForDom) {
     $('#js-container').empty();
-    for (i=0;i<arrayDataForDom.length;i++);
-    
+    $('.js-total-container').text(`${data.total}`);
+    for (let data of arrayDataForDom) {
     $('.js-container').append(`
-    <div>
-    ${arrayDataForDom.numberOne} 
-    ${arrayDataForDom.operator} 
-    ${arrayDataForDom.numberTwo} 
-    = 
-    ${arrayDataForDom.total}
-    </div>`);
-
-
-
+       <div>
+           ${data.numberOne}
+           ${data.operator}
+           ${data.numberTwo}
+           =
+           ${data.total}
+       </div>`);
+    }
 }
