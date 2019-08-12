@@ -59,7 +59,14 @@ function render(arrayDataForDom){
     $('#js-container').empty();
     for (i=0;i<arrayDataForDom.length;i++);
     
-    $('.js-container').append(``);
+    $('.js-container').append(`
+    <div>
+    ${arrayDataForDom.numberOne} 
+    ${arrayDataForDom.operator} 
+    ${arrayDataForDom.numberTwo} 
+    = 
+    ${arrayDataForDom.total}
+    </div>`);
 
 
 
